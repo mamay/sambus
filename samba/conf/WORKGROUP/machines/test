@@ -1,0 +1,14 @@
+[test machine share]
+        comment = Test machine share
+        path = /srv/test machine
+        browseable = yes
+        read only = no
+        guest ok = no
+        valid users = @"WORKGROUP+sample group"
+        admin users = @"WORKGROUP+sample group"
+        public = yes
+        inherit owner = yes
+        inherit acls = yes
+        inherit permissions = yes
+        map acl inherit = yes
+        locking = no

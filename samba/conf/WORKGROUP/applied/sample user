@@ -1,0 +1,14 @@
+[sample group share]
+        comment = Sample group share
+        path = /srv/group share
+        browseable = yes
+        read only = no
+        guest ok = no
+        valid users = @"WORKGROUP+sample group"
+        admin users = @"WORKGROUP+sample group"
+        public = yes
+        inherit owner = yes
+        inherit acls = yes
+        inherit permissions = yes
+        map acl inherit = yes
+        locking = no
