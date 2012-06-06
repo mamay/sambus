@@ -20,7 +20,7 @@
 
 log_file=/var/log/samba/preexec.log
 conf=/etc/samba/conf
-debug=0
+debug=5
 groups_cache_expire=600 # seconds
 
 #### Error codes definitions ####
@@ -336,6 +336,9 @@ check_mtime()
 		else
 			return ${E_ERROR}
 		fi
+	elif [ -e "${conf}/${domain}/mtimes/${type}_${name}" ]; then
+		rm "${conf}/${domain}/mtimes/${type}_${name}"
+		return ${E_ERROR}
 	else
 		return ${E_FILE_NOT_FOUND}
 	fi
@@ -611,7 +614,7 @@ if ( config_exists ); then
 			do_log ${LOG_INFO} ${retur} "Groups mtimes not changed (${retur})"
 			check_mtime "u" "${user}"
 			retu=$?
-			if [ ${retu} -ne ${E_ERROR} ] || [ ${retu} -ne ${E_CHECK_NOT_FOUND} ]; then
+			if [ ${retu} -eq ${E_OK} ] || [ ${retu} -eq ${E_FILE_NOT_FOUND} ]; then
 				do_log ${LOG_INFO} ${retu} "User mtime not changed (${retu})"
 				load_shares
 				if ( check_shares_mtimes ); then
