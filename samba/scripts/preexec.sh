@@ -15,7 +15,7 @@
 #
 # (c) by Yuri Mamaev aka MaSTeR_MaMay at 06/06/2012
 #
-# License pending
+# This script uses GPLv3 license
 #
 
 log_file=/var/log/samba/preexec.log
