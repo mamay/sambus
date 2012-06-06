@@ -20,7 +20,7 @@
 
 log_file=/var/log/samba/preexec.log
 conf=/etc/samba/conf
-debug=5
+debug=0
 groups_cache_expire=600 # seconds
 
 #### Error codes definitions ####
